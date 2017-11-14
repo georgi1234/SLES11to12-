@@ -1,0 +1,41 @@
+1.проверка на статуса
+haeviewcl
+crm config show
+2.BL sysvopy job
+да се провери дали е минал коректно
+ако не може да се изпълни 
+/root/scripts/mk_syscopy.sh 
+3.добавяне на репозиторито
+BL job но се изпълнява от BL
+zypper lr
+sles-hae-wa10
+haeviewcl
+спиране на пакетите
+crm_mon -r1
+(add for cicle)
+проверка на файловата система ако е по малко от 2Т
+fsck
+haehaltres -f име на пакета
+cs_clusterstate |grep име на пакета
+haemaitenancemode -e #вкаржане на клъстера в меитанасе мод
+rcopenais stop #спира клъстера
+chkconfig -d openais
+zypper lu |wc -l # и на двата нода да се види дали имат еднакво количество пакетите
+zypper up # на първия нод
+проверки на първия ноде ако е запалил коректно
+/lib/modules
+lin_type
+/var/log/boot.msg
+/boot/grub/device.map
+/boot/grub/menu.lst
+4.
+zypper up # на втория нод
+reboot
+check
+4.стартиране на клъстера
+chkconfig -d openais
+crm_mod -r1
+rcopenais start
+5.спиране на меитанасе мод
+haemaitenancemode -d
+crm_mon -r1

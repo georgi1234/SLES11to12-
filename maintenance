@@ -28,6 +28,13 @@ lin_type
 /var/log/boot.msg
 /boot/grub/device.map
 /boot/grub/menu.lst
+--възможен проблем с lin_tape
+rpm -qa -lasr |grep lin_tape
+rpm -e lin_tape
+cd /special/opt/san_wiz/driver/
+rpmbuild --rebuild lin_tape
+check /usr/src/packages/RPMS/lin_tape
+rpm -ivh lin_tape
 4.
 zypper up # на втория нод
 reboot
@@ -39,3 +46,7 @@ rcopenais start
 5.спиране на меитанасе мод
 haemaitenancemode -d
 crm_mon -r1
+
+for rg in $(haeshowresourcegroups); do haehaltres -f $(haeshowprimitivesfromgroup -c ocf -p heartbeat -t Filesystem $rg | head -n 1); done 
+haeshowfscheckcommands <ResGroup> > fsck && while read line; do echo $line \&;  done < fsck
+

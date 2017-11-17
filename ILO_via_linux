@@ -1,0 +1,69 @@
+If you forgot what iLO IP has been defined on your linux server and you are working remotely on it, don’t worry, you can still retrieve it with a common tool called ipmitool – available on most of the distros with standard packages:
+
+
+[admin@myserver /]# ipmitool lan print
+Set in Progress : Set Complete
+Auth Type Support :
+Auth Type Enable : Callback :
+: User :
+: Operator :
+: Admin :
+: OEM :
+IP Address Source : Static Address
+IP Address : 10.10.50.20
+Subnet Mask : 255.255.255.0
+MAC Address : 1a:2b:3c:4d:56:78
+SNMP Community String :
+BMC ARP Control : ARP Responses Enabled, Gratuitous ARP Disabled
+Default Gateway IP : 10.10.50.254
+802.1q VLAN ID : Disabled
+802.1q VLAN Priority : 0
+RMCP+ Cipher Suites : 0,1,2,3
+Cipher Suite Priv Max : XuuaXXXXXXXXXXX
+: X=Cipher Suite Unused
+: c=CALLBACK
+: u=USER
+: o=OPERATOR
+: a=ADMIN
+
+[admin@myserver /]# ipmitool lan print
+Set in Progress : Set Complete
+Auth Type Support :
+Auth Type Enable : Callback :
+: User :
+: Operator :
+: Admin :
+: OEM :
+IP Address Source : Static Address
+IP Address : 10.10.50.20
+Subnet Mask : 255.255.255.0
+MAC Address : 1a:2b:3c:4d:56:78
+SNMP Community String :
+BMC ARP Control : ARP Responses Enabled, Gratuitous ARP Disabled
+Default Gateway IP : 10.10.50.254
+802.1q VLAN ID : Disabled
+802.1q VLAN Priority : 0
+RMCP+ Cipher Suites : 0,1,2,3
+Cipher Suite Priv Max : XuuaXXXXXXXXXXX
+: X=Cipher Suite Unused
+: c=CALLBACK
+: u=USER
+: o=OPERATOR
+: a=ADMIN
+: O=OEM
+If you’re getting such an error when you are using the command:
+
+
+[admin@myserver /]# ipmitool lan print
+Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+
+[admin@myserver /]# ipmitool lan print
+Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+This means you just need to enable some modules before:
+
+
+[admin@myserver /]# modprobe ipmi_devintf
+[admin@myserver /]# modprobe ipmi_si
+
+[admin@myserver /]# modprobe ipmi_devintf
+[admin@myserver /]# modprobe ipmi_si

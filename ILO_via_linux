@@ -67,3 +67,5 @@ This means you just need to enable some modules before:
 
 [admin@myserver /]# modprobe ipmi_devintf
 [admin@myserver /]# modprobe ipmi_si
+root@linux:~ # hponcfg -w iLO_ouput.out
+root@linux:~ # cat ILO_ouput.out

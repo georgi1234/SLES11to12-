@@ -1,0 +1,12 @@
+mount /dev/<device name> /mnt
+cat /proc/partitions
+lvdisplay
+ls /mnt
+mount --rbind /proc /mnt/proc
+mount --rbind /sys /mnt/sys
+mount --rbind /dev /mnt/dev
+chroot /mnt
+mount -a
+
+
+/sbin/mkinitrd -f evms

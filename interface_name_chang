@@ -1,0 +1,49 @@
+This action plan only for systemd based linux servers.
+The aims is not to repare VDC environmemt problems.
+
+1. Check Linux version.
+In most cases execute:
+cat /etc/*release
+example from my environment:
+[root@vm2 ~]# cat /etc/*release
+CentOS Linux release 7.2.1511 (Core) 
+2.Check name of set interfaces:
+ip link show
+example from my environment:
+[root@vm2 ~]# ip link show
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT qlen 1000
+    link/ether 08:00:27:6f:de:0d brd ff:ff:ff:ff:ff:ff
+3.Change grub /etc/default/grub
+Add entry:
+GRUB_CMDLINE_LINUX=" crashkernel=auto net.ifnames=0 biosdevname=0 rhgb quiet"
+4.Next step will be to save this in grub configuration file.
+grub2-mkconfig -o /boot/grub2/grub.cfg 
+5. Correct ifcfg file configuration:
+Edit NAME and DEVICE parameters in ifcfg file to new Network Interface name.
+
+ 5.1 Check
+ example from my environment:
+ cat /etc/sysconfig/network-scripts/ifcfg-enp0s3 
+
+DEVICE="eth0"
+ 5.2 Edit ifcfg file name:
+ example from my environment:
+ # mv /etc/sysconfig/network-scripts/ifcfg-enp0s3 /etc/  sysconfig/  network-scripts/ifcfg-eth0
+
+6. Disable NetworkManager
+ystemctl disable NetworkManager
+7.reboot
+Voala see output
+[root@vm2 ~]# ip a
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 08:00:27:6f:de:0d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.89/24 brd 192.168.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe6f:de0d/64 scope link 
+       valid_lft forever preferred_lft forever
+
+
+
+
+
+

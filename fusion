@@ -1,0 +1,66 @@
+1-1STTIXO
+Hi, Georgi,
+Can you please proceed with config of the following VMs, as per the email sent by Kamen Milev.
+Thank you.
+VAAS-INTR6-AMS-KOO-FCTRL-1
+GRUB_TERMINAL=serial
+GRUB_SERIAL_COMMAND="serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1"
+
+grub2-mkconfig -o
+grub2-mkconfig -o "$(readlink -e /etc/grub2.cfg)"
+
+ VAAS-INTR6-AMS-KOO-FVTA-1 ma-c7-57-108
+ VAAS-INTR6-HON-002-FVTA-1 ma-c7-57-109
+ VAAS-INTR6-LAX-001-FVTA-1 ma-c7-57-110
+ VAAS-INTR6-NYC-002-FVTA-1 ma-c7-57-111
+ VAAS-INTR6-SIN-001-FVTA-1 ma-c7-57-112
+
+TrueSpeed VNF Test Solution
+adatdce ada
+regarding redhat
+yum install kvm
+
+yum install virt-manager libvirt libvirt-python python-virtinst
+yum install qemu-kvm libvirt
+yum install virt-install libvirt-python virt-manager virt-install libvirt-client
+systemctl start libvirtd.service
+systemctl enable libvirtd
+change root passwd for root user 
+Interoute1
+
+1 Log into the Server or Virtual Machine (VM) (as root)
+2 Run thiGeorgi.Dimitrov@interoute.commands command:
+mkdir /var/tmp/install
+mv Fusion-Controller-Collector-3.0.1.zip /var/tmp/install
+unzip Fusion-Controller-Collector-3.0.1.zip
+rm Fusion-Controller-Collector-3.0.1.zip
+cd Fusion-3.0.1_<date>
+yum update
+./yumUpdate
+./createUser
+exit
+ The "createUser" script creates a new Linux user with the name
+ "adatdce". The default password is ada1tdce and should be changed
+ especially for production systems
+Ensure you log in as adatdce for these steps.
+cd /var/tmp/install/Fusion-3.0.1_<date>
+./installFusion
+exit
+Log into the Server/VM as the root user.
+2 Run the following commands to execute the post installation and exit the Linux
+session (as root):
+/ada/as_root/postInstall
+3 When installing Fusion 3.0.1 for the very first time, run the following command specified
+below (which is not intended for an upgrade from Fusion 2.1 to Fusion 3.0.1):
+Log in as root (You must log in as root for these steps.)
+cd /usr/lib64
+ln -s libcrypto.so.1.0.1e libcrypto.so.1.0.0
+cd /ada/netanalyst/confd-6.0/tools/
+python get-pip.py
+yum -y install python-devel
+yum -y install openssl-devel
+yum -y install libffi-devel
+yum -y install gcc
+
+
+pip install paramiko

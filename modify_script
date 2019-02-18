@@ -111,7 +111,7 @@ echo "root:sles11to12" |chpasswd
 #cp -fr  /$OLDSLES/$CONF/services /$CONF/services
 
 # Leading slash was missing after /$OLDSLES/opt/special/
-rsync -avz  /$OLDSLES/root/scripts/ /root/scripts/   # I think that leading slash needs to be removed, but as I can’t see a /root/scripts/scripts on rdeluh0000556, I think that I currently read an old script…
+rsync -avz  /$OLDSLES/root/scripts/ /root/scripts   # I think that leading slash needs to be removed, but as I can’t see a /root/scripts/scripts on rdeluh0000556, I think that I currently read an old script…
 rsync -avz  /$OLDSLES/opt/special/ /opt/special
 
 

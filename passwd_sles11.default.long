@@ -1,0 +1,25 @@
+root:x:0:0:root:/root:/bin/bash
+at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
+bin:x:1:1:bin:/bin:/bin/bash
+daemon:x:2:2:Daemon:/sbin:/bin/bash
+ftp:x:40:49:FTP account:/srv/ftp:/bin/bash
+games:x:12:100:Games account:/var/games:/bin/bash
+haldaemon:x:101:102:User for haldaemon:/var/run/hald:/bin/false
+lp:x:4:7:Printing daemon:/var/spool/lpd:/bin/bash
+mail:x:8:12:Mailer daemon:/var/spool/clientmqueue:/bin/false
+messagebus:x:100:101:User for D-Bus:/var/run/dbus:/bin/false
+nobody:x:65534:65533:nobody:/var/lib/nobody:/bin/bash
+ntp:x:74:106:NTP daemon:/var/lib/ntp:/bin/false
+polkituser:x:104:107:PolicyKit:/var/run/PolicyKit:/bin/false
+postfix:x:51:51:Postfix Daemon:/var/spool/postfix:/bin/false
+puppet:x:102:104:Puppet daemon:/var/lib/puppet:/bin/false
+sshd:x:71:65:SSH daemon:/var/lib/sshd:/bin/false
+suse-ncc:x:105:108:Novell Customer Center User:/var/lib/YaST2/suse-ncc-fakehome:/bin/bash
+uuidd:x:103:105:User for uuidd:/var/run/uuidd:/bin/false
+wwwrun:x:30:8:WWW daemon apache:/var/lib/wwwrun:/bin/false
+ermclnt:x:50000:50000:ERM client application account:/var/opt/erm/client:/opt/erm/bin/update_clientsh
+man:x:13:62:Manual pages viewer:/var/cache/man:/bin/bash
+news:x:9:13:News system:/etc/news:/bin/bash
+uucp:x:10:14:Unix-to-Unix CoPy system:/etc/uucp:/bin/bash
+svc-ud-local:x:50001:0::/home/svc-ud-local:/bin/bash
+salt:x:106:402:salt-master daemon:/var/lib/salt:/bin/false

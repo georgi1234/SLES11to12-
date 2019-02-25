@@ -22,6 +22,8 @@ cat /$CONF/fstab
 
 read
 
+
+
 ####check what kind a server is######
 
 if [ -f /$CONF/products.d/SUSE_SLES_SAP.prod ]
@@ -121,6 +123,13 @@ domainname $( cat /etc/defaultdomain )
 
 ##set hostname
 hostnamectl set-hostname $3
+
+##set coreckt myhostname value###
+
+old_hostname=`grep ^myhostname /etc/postfix/main.cf`
+new_hostname=`echo myhostname = $(hostname -f)`
+sed -ie "s/$old_hostname/$new_hostname/" /etc/postfix/main.cf
+
 
 ##check nfs mount points
 ######change machina id, this is need to rejoin to a suse-mgr01#####

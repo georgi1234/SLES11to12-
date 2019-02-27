@@ -16,7 +16,7 @@ mount /dev/$1/home /$OLDSLES/usr2/local/
 ######check fstab#######
 ###df -htxfs |grep -v system|sort -n -k6###can use that to check if ther are differences##
 #echo "FSTAB"
-
+echo "FS from old vm" >> /$CONF/fstab
 grep -vf /etc/fstab /root/scripts/sles_migration/fstab  >> /$CONF/fstab
 cat /$CONF/fstab
 

@@ -120,7 +120,7 @@ echo 'basfad.basf.net' > /etc/defaultdomain
 domainname $( cat /etc/defaultdomain )
 
 ##set hostname
-hostnamectl set-hostname $3
+hostnamectl set-hostname $2
 
 ##check nfs mount points
 ######change machina id, this is need to rejoin to a suse-mgr01#####

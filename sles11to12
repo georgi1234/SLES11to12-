@@ -87,12 +87,13 @@ rsync -avz /$OLDSLES/opt/apxpccs/ /opt/apxpccs
 if [ -f /$OLDSLES/etc/oratab ]
  then
    cp -fr  /$OLDSLES/etc/oratab /etc/oratab
+ fi
    if  [ -f /$OLDSLES/etc/oraInst.loc ]
   then
     cp -fr  /$OLDSLES/etc/oraInst.loc /etc/oraInst.loc
   else
     echo "there is not oraInst.loc"
-  fi
+ 
  else
    echo "There is not oracle DB installed"
 fi
@@ -126,8 +127,10 @@ hostnamectl set-hostname $2
 
 ##check nfs mount points
 ######change machina id, this is need to rejoin to a suse-mgr01#####
-rm  -f /etc/machine-id
-dbus-uuidgen --ensure=/etc/machine-id
+
+rm /etc/machine-id
+systemd-machine-id-setup
+
 ####configure vastool cleent####
 declare -f vas_client_conf
 

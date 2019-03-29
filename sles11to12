@@ -19,8 +19,7 @@ mount /dev/$1/home /$OLDSLES/usr2/local/
 ###df -htxfs |grep -v system|sort -n -k6###can use that to check if ther are differences##
 #echo "FSTAB"
 cp /$CONF/fstab /$CONF/fstab.back
-grep -vf /etc/fstab /mnt/etc/fstab  >> /$CONF/fstab
-cat /$CONF/fstab
+
 
 read
 
@@ -91,12 +90,7 @@ if [ -f /$OLDSLES/etc/oratab ]
    if  [ -f /$OLDSLES/etc/oraInst.loc ]
   then
     cp -fr  /$OLDSLES/etc/oraInst.loc /etc/oraInst.loc
-  else
-    echo "there is not oraInst.loc"
- 
- else
-   echo "There is not oracle DB installed"
-fi
+ fi
 ##only for HANA
 if [ -d /mnt/var/lib/hdb/ ]
  then
@@ -145,7 +139,7 @@ vas_client_conf() {
 vas_client_conf
 ####joint to basf AD$#####
 
-/root/scripts/sles_migration/basfad/./basfad_join2AD.sh -f $3
+/root/scripts/migration/basfad/./basfad_join2AD.sh -f $2
 
 vastool status
 

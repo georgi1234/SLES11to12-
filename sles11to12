@@ -165,11 +165,13 @@ systemctl enable autofs && systemctl restart autofs
 $OPSPACKAGE --loglevel info --opsw_gw_addr_list 10.92.96.41:3001 -f --force_new_device
 
 #####apx set#####
+cp /root/scripts/migration/apxpccp_lin64_create_pks.tar  /opt/apxpccp/
+tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
+
 cp recreate_pccc_pks.sh /opt/apxpccc/
 cp recreate_pccp_pks.sh /opt/apxpccp/
 
 /opt/apxpccc/recreate_pccc_pks.sh
 /opt/apxpccp/recreate_pccp_pks.sh
-#/opt/apxpccp/recreate_pccs_pks.sh
 /opt/apxpccp/apxcntl restart
 

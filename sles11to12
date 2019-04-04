@@ -20,12 +20,7 @@ mount /dev/$1/home /$OLDSLES/usr2/local/
 #echo "FSTAB"
 cp /$CONF/fstab /$CONF/fstab.back
 
-grep -vf /etc/fstab fstab.sles11 |egrep -v 'ext3|ext2|proc|sysfs|debugfs|devpts|swap' >> /etc/fstab
 
-less /etc/fstab
-read
-mount -a
-df -h
 
 ####check what kind a server is######
 
@@ -169,8 +164,8 @@ cp /root/scripts/migration/apxpccp_lin64_create_pks.tar  /opt/apxpccp/
 cd  /opt/apxpccp/
 tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 
-cp recreate_pccc_pks.sh /opt/apxpccc/
-cp recreate_pccp_pks.sh /opt/apxpccp/
+#cp recreate_pccc_pks.sh /opt/apxpccc/
+#cp recreate_pccp_pks.sh /opt/apxpccp/
 
 /opt/apxpccc/recreate_pccc_pks.sh
 /opt/apxpccp/recreate_pccp_pks.sh

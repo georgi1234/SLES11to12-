@@ -171,3 +171,8 @@ tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 /opt/apxpccp/recreate_pccp_pks.sh
 /opt/apxpccp/apxcntl restart
 
+#sinc shadow file
+
+cp /etc/shadow /etc/shadow.back
+
+pwconv

@@ -84,11 +84,11 @@ rsync -avz /$OLDSLES/opt/apxpccs/ /opt/apxpccs
 
 if [ -f /$OLDSLES/etc/oratab ]
  then
-   cp -fr  /$OLDSLES/etc/oratab /etc/oratab
+   cp -pfr  /$OLDSLES/etc/oratab /etc/oratab
  fi
    if  [ -f /$OLDSLES/etc/oraInst.loc ]
   then
-    cp -fr  /$OLDSLES/etc/oraInst.loc /etc/oraInst.loc
+    cp -pfr  /$OLDSLES/etc/oraInst.loc /etc/oraInst.loc
  fi
 ##only for HANA
 if [ -d /mnt/var/lib/hdb/ ]

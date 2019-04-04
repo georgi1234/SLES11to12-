@@ -166,6 +166,7 @@ $OPSPACKAGE --loglevel info --opsw_gw_addr_list 10.92.96.41:3001 -f --force_new_
 
 #####apx set#####
 cp /root/scripts/migration/apxpccp_lin64_create_pks.tar  /opt/apxpccp/
+cd  /opt/apxpccp/
 tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 
 cp recreate_pccc_pks.sh /opt/apxpccc/

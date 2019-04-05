@@ -171,7 +171,13 @@ tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 /opt/apxpccp/recreate_pccp_pks.sh
 /opt/apxpccp/apxcntl restart
 
-#sinc shadow file
+#sinc passwd,group and shadow files
+echo "###" >> /etc/passwd
+echo "###" >> /etc/group
+cp /etc/passwd /etc/passwd.back
+cp /etc/group /etc/group.back
+/root/scripts/migration/getLinuxApplUsers.sh >> /etc/passwd
+/root/scripts/migration/getLinuxApplGroups.sh >> /etc/group
 
 cp /etc/shadow /etc/shadow.back
 

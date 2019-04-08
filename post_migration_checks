@@ -1,0 +1,26 @@
+echo "checks for duplicate entries in passwd file"
+cut -d: -f1 /etc/passwd|sort|uniq -d
+echo "checks for duplicate entries in group file"
+cut -d: -f1 /etc/group|sort|uniq -d
+if [ -d /special ]
+ then
+   ls -la /special/
+ else 
+   echo "CREATE SIMLINK!!!!!!"
+fi
+if [ -d /scb ]
+ then  
+   ls -la /scb/
+ else
+   echo "CREATE SIMLINK!!!!!!"
+fi  
+a=$(find / -maxdepth 1 -xdev -type l -exec ls -l {} \;|wc -l)
+b=$(find /mnt -maxdepth 1 -xdev -type l -exec ls -l {} \;|wc -l)
+if [ "$a" -eq "$b" ]
+ then
+   echo "SIMLINK IS OK"
+  else 
+   echo "CHECK SIMLINKS !!!!!!!!"
+fi
+ls -la /etc/oratab
+  

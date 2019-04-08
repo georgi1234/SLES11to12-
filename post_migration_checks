@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "checks for duplicate entries in passwd file"
 cut -d: -f1 /etc/passwd|sort|uniq -d
 echo "checks for duplicate entries in group file"

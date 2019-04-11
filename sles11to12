@@ -171,6 +171,15 @@ tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 /opt/apxpccp/recreate_pccp_pks.sh
 /opt/apxpccp/apxcntl restart
 
+#####ora agent sync check
+s=$(egrep 'oracle_agent' /etc/fstab)
+if [ $s -eq "0" ]  
+ then 
+  echo "there is separate LV for Oracle_agent"
+ else 
+  rsync -avz /mnt/orecle_agent/* /oracle_agemt/
+fi
+
 #sinc passwd,group and shadow files
 echo "###" >> /etc/passwd
 echo "###" >> /etc/group

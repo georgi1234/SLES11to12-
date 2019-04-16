@@ -43,6 +43,11 @@ sed -i "s/\/$OLDSLES//" linklist
 cat linklist
 while read p; do ln -s $p;done < linklist
 find / -maxdepth 1 -xdev -type l -exec ls -l {} \;
+####for non sap oracle servers only#####
+ rm -rf /special/
+ln -s /opt/special/ /special
+ls /special
+
 ##fstab sincronisation
 cp -fr  /$OLDSLES/$CONF/fstab  /$CONF/fstab$(date  +%Y%m%d)
 diff /$CONF/fstab /$CONF/fstab$(date  +%Y%m%d)

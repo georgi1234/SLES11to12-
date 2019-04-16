@@ -190,13 +190,13 @@ if [ $s -eq "0" ]
 fi
 
 #sinc passwd,group and shadow files
-echo "###" >> /etc/passwd
-echo "###" >> /etc/group
-cp /etc/passwd /etc/passwd.back
-cp /etc/group /etc/group.back
-/root/scripts/migration/getLinuxApplUsers.sh >> /etc/passwd
-/root/scripts/migration/getLinuxApplGroups.sh >> /etc/group
+#echo "###" >> /etc/passwd
+#echo "###" >> /etc/group
+#cp /etc/passwd /etc/passwd.back
+#cp /etc/group /etc/group.back
+#/root/scripts/migration/getLinuxApplUsers.sh >> /etc/passwd
+#/root/scripts/migration/getLinuxApplGroups.sh >> /etc/group
 
-cp /etc/shadow /etc/shadow.back
+#cp /etc/shadow /etc/shadow.back
 
-pwconv
+#pwconv

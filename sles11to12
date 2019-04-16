@@ -97,7 +97,16 @@ if [ -d /mnt/var/lib/hdb/ ]
  else
    echo "there is not hana running"
 fi
+####oracle_agent check#######
+ egrep 'oracle_agent' /etc/fstab
 
+if [ $? -eq '1' ]
+ then 
+  rsync -avz /mnt/oracle_agent/* /oracle_agent
+ else 
+  echo " oracle_agent is a separate volume"
+ fi 
+   
 ##setup network
 for p in {0..1}
 do

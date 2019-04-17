@@ -107,7 +107,7 @@ fi
 
 if [ $? -eq '1' ]
  then 
-  rsync -avz /mnt/opt/oracle_agent/* /oracle_agent
+  rsync -avz /mnt/opt/oracle_agent/* /opt/oracle_agent
  else 
   echo " oracle_agent is a separate volume"
  fi 

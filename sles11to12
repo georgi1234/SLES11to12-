@@ -103,7 +103,7 @@ if [ -d /mnt/var/lib/hdb/ ]
    echo "there is not hana running"
 fi
 ####oracle_agent check#######
- egrep 'oracle_agent' /etc/fstab
+ egrep 'oracle_agent' /mnt/etc/fstab
 
 if [ $? -eq '1' ]
  then 

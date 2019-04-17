@@ -183,6 +183,7 @@ tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks.tar
 
 /opt/apxpccc/recreate_pccc_pks.sh
 /opt/apxpccp/recreate_pccp_pks.sh
+/opt/apxpccp/recreate_pccp_apxcmd_pks.sh
 /opt/apxpccp/apxcntl restart
 
 #####ora agent sync check

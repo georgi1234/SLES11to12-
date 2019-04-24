@@ -66,7 +66,15 @@ cp -fr  /$OLDSLES/$CONF/hosts /$CONF/hosts
 
 
 ##set rpcbind user
-echo "rpc:x:495:65534:user for rpcbind:/var/lib/empty:/sbin/nologin" >> /$CONF/passwd
+egrep rpc /etc/passwd
+
+if [ $? -eq "1" ]
+then
+ echo "rpc:x:495:65534:user for rpcbind:/var/lib/empty:/sbin/nologin" >> /$CONF/passwd
+ else 
+  echo "User persist"
+fi  
+ 
 echo "root:sles11to12" |chpasswd
 
 #cp -fr  /$OLDSLES/$CONF/services /$CONF/services

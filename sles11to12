@@ -183,17 +183,17 @@ $OPSPACKAGE --loglevel info --opsw_gw_addr_list 10.92.96.41:3001 -f --force_new_
 
 #####apx set#####
 #cp /root/scripts/migration/apxpccp_lin64_create_pks.tar  /opt/apxpccp/
-cd  /opt/apxpccp/
-tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks_after_move.tar 
+#cd  /opt/apxpccp/
+#tar -xvf  /opt/apxpccp/apxpccp_lin64_create_pks_after_move.tar 
 
 #cp recreate_pccc_pks.sh /opt/apxpccc/
 #cp recreate_pccp_pks.sh /opt/apxpccp/
 
-/opt/apxpccc/recreate_pccc_pks.sh
-/opt/apxpccp/recreate_pccp_pks.sh
-/opt/apxpccp/recreate_pccp_apxcmd_pks.sh
-/opt/apxpccp/recreate_pccp_pks_after_move.sh
-/opt/apxpccp/apxcntl restart
+#/opt/apxpccc/recreate_pccc_pks.sh
+#/opt/apxpccp/recreate_pccp_pks.sh
+#/opt/apxpccp/recreate_pccp_apxcmd_pks.sh
+#/opt/apxpccp/recreate_pccp_pks_after_move.sh
+#/opt/apxpccp/apxcntl restart
 
 #####ora agent sync check
 s=$(egrep 'oracle_agent' /etc/fstab)
@@ -201,7 +201,7 @@ if [ $s -eq "0" ]
  then 
   echo "there is separate LV for Oracle_agent"
  else 
-  rsync -avz /mnt/orecle_agent/* /oracle_agemt/
+  rsync -avz /mnt/opt/oracle_agent/* /opt/oracle_agent/
 fi
 
 #sinc passwd,group and shadow files

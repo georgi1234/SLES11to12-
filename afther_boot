@@ -47,4 +47,3 @@ while read p; do scp -r /usr2/local/dimitrge/migration/backup      root@$p:/tmp 
 for ora in $(cat ora_list); do ssh root@$ora "hostname; lvs |grep root";done
 for ora in $(cat ora_list); do ssh root@$ora "hostname; find / -maxdepth 1 -xdev -type l -exec ls -l {} \;";done
 for ora in $(cat ora_list); do ssh root@$ora "hostname; df -h |grep oracle_agent";done
-

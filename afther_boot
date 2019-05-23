@@ -33,7 +33,18 @@ rpm -Uvh /mnt/tmp/backup/omni_packages/*.rpm
 
 for ora in $(cat ora_meintanace);do  ssh root@$ora "hostname; vgs ";done > ora_vg
 
-while read p; do scp /usr2/local/dimitrge/migration/after_boot.sh      root@$p:/root/scripts; done < /infra/linux/SUSE-Manager/sap_list
-while read p; do scp /usr2/local/dimitrge/migration/sles11to12     root@$p:/root/scripts; done < /infra/linux/SUSE-Manager/sap_list
-while read p; do scp /usr2/local/dimitrge/migration/HPOA_12.06_Linux_64_v1.tar.gz      root@$p:/tmp ; done < /infra/linux/SUSE-Manager/sap_list
-while read p; do scp -r /usr2/local/dimitrge/migration/backup      root@$p:/tmp ; done < /infra/linux/SUSE-Manager/sap_list
+
+#!/bin/bash
+
+echo "$1 is a list of servers"
+
+while read p; do scp /usr2/local/dimitrge/migration/after_boot.sh      root@$p:/root/scripts; done < /infra/linux/SUSE-Manager/$1
+while read p; do scp /usr2/local/dimitrge/migration/sles11to12     root@$p:/root/scripts; done < /infra/linux/SUSE-Manager/$1
+while read p; do scp /usr2/local/dimitrge/migration/HPOA_12.06_Linux_64_v1.tar.gz      root@$p:/tmp ; done < /infra/linux/SUSE-Manager/$1
+while read p; do scp -r /usr2/local/dimitrge/migration/backup      root@$p:/tmp ; done < /infra/linux/SUSE-Manager/$1
+
+
+for ora in $(cat ora_list); do ssh root@$ora "hostname; lvs |grep root";done
+for ora in $(cat ora_list); do ssh root@$ora "hostname; find / -maxdepth 1 -xdev -type l -exec ls -l {} \;";done
+for ora in $(cat ora_list); do ssh root@$ora "hostname; df -h |grep oracle_agent";done
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+
+ORA_LIST=/infra/linux/SUSE-Manager/ora_list
+printf '\e[1;34m%-6s\e[m\n' "CHECK ROOT VG NAME"
+echo
+for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; lvs |egrep 'root|rootvol'";done
+printf '\e[1;34m%-6s\e[m\n' "CHECK oracle_agen SIMLINK"
+echo
+for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; find / -maxdepth 1 -xdev -type l -exec ls -l {} \;|grep oracle_agent;";done
+printf '\e[1;34m%-6s\e[m\n' "CHECK IF oracle_agent IS A SEPARATE VOLUME"
+echo
+for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; df -h |grep oracle_agent";done

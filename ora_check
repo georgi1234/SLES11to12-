@@ -12,3 +12,6 @@ for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; find / -maxdepth 1 -xde
 printf '\e[1;34m%-6s\e[m\n' "CHECK IF oracle_agent IS A SEPARATE VOLUME"
 echo
 for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; df -h |grep oracle_agent";done
+printf '\e[1;34m%-6s\e[m\n' "CHECK NETWORK ADAPTERS"
+echo
+for ora in $(cat $ORA_LIST); do ssh root@$ora "hostname; ip a|egrep '^[0-9]'";done
